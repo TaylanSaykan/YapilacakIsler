@@ -28,11 +28,6 @@ namespace Yapılacakİsler
 
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnAdd_Click(object sender, EventArgs e)
         {
             string title = txtTitle.Text.Trim();
@@ -58,9 +53,9 @@ namespace Yapılacakİsler
         private void btnDelete_Click(object sender, EventArgs e)
         {
             if (clbToDos.SelectedIndex == -1) return;
-           
+
             ToDoItem selectedToDoItem = (ToDoItem)clbToDos.SelectedItem;
-            db.Remove(selectedToDoItem); 
+            db.Remove(selectedToDoItem);
             db.SaveChanges();
             Listele();
         }

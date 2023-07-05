@@ -81,7 +81,6 @@
             Controls.Add(btnAdd);
             Name = "Form1";
             Text = "To Do List";
-            Load += Form1_Load;
             ResumeLayout(false);
             PerformLayout();
         }
