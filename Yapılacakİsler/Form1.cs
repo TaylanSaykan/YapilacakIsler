@@ -41,5 +41,10 @@ namespace Yapılacakİsler
 
             Listele();
         }
+
+        private void clbToDos_ItemCheck(object sender, ItemCheckEventArgs e)
+        {
+            
+        }
     }
 }

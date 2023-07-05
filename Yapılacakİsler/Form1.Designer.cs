@@ -39,7 +39,7 @@
             btnAdd.Name = "btnAdd";
             btnAdd.Size = new Size(94, 29);
             btnAdd.TabIndex = 0;
-            btnAdd.Text = "button1";
+            btnAdd.Text = "EKLE";
             btnAdd.UseVisualStyleBackColor = true;
             btnAdd.Click += btnAdd_Click;
             // 
@@ -53,10 +53,11 @@
             // clbToDos
             // 
             clbToDos.FormattingEnabled = true;
-            clbToDos.Location = new Point(12, 46);
+            clbToDos.Location = new Point(12, 48);
             clbToDos.Name = "clbToDos";
             clbToDos.Size = new Size(225, 334);
             clbToDos.TabIndex = 2;
+            clbToDos.ItemCheck += clbToDos_ItemCheck;
             // 
             // Form1
             // 
