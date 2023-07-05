@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using System.Reflection.Emit;
+using System.Windows.Forms;
 
 namespace Yapılacakİsler
 {
@@ -17,11 +18,13 @@ namespace Yapılacakİsler
         private void Listele()
         {
             clbToDos.Items.Clear();
-            foreach (var item in db.ToDoItems.OrderBy(x => x.Done))
+            clbToDos.ItemCheck -= clbToDos_ItemCheck!;
+            foreach (var item in db.ToDoItems.Where(x => !x.Deleted).OrderBy(x => x.Done))
             {
                 clbToDos.Items.Add(item, item.Done);
             }
             clbToDos.DisplayMember = "Title";
+            clbToDos.ItemCheck += clbToDos_ItemCheck!;
 
         }
 
@@ -44,7 +47,22 @@ namespace Yapılacakİsler
 
         private void clbToDos_ItemCheck(object sender, ItemCheckEventArgs e)
         {
-            
+            if (e.NewValue == CheckState.Indeterminate) { return; }
+            ToDoItem selectedTodoItem = (ToDoItem)clbToDos.Items[e.Index];
+            bool yeniDurum = e.NewValue == CheckState.Checked;
+            selectedTodoItem.Done = yeniDurum;
+            db.SaveChanges();
+            BeginInvoke(Listele);
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            if (clbToDos.SelectedIndex == -1) return;
+           
+            ToDoItem selectedToDoItem = (ToDoItem)clbToDos.SelectedItem;
+            db.Remove(selectedToDoItem); 
+            db.SaveChanges();
+            Listele();
         }
     }
 }

@@ -31,6 +31,7 @@
             btnAdd = new Button();
             txtTitle = new TextBox();
             clbToDos = new CheckedListBox();
+            btnDelete = new Button();
             SuspendLayout();
             // 
             // btnAdd
@@ -59,11 +60,22 @@
             clbToDos.TabIndex = 2;
             clbToDos.ItemCheck += clbToDos_ItemCheck;
             // 
+            // btnDelete
+            // 
+            btnDelete.Location = new Point(65, 388);
+            btnDelete.Name = "btnDelete";
+            btnDelete.Size = new Size(94, 29);
+            btnDelete.TabIndex = 3;
+            btnDelete.Text = "SİL";
+            btnDelete.UseVisualStyleBackColor = true;
+            btnDelete.Click += btnDelete_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(btnDelete);
             Controls.Add(clbToDos);
             Controls.Add(txtTitle);
             Controls.Add(btnAdd);
@@ -79,5 +91,6 @@
         private Button btnAdd;
         private TextBox txtTitle;
         private CheckedListBox clbToDos;
+        private Button btnDelete;
     }
 }
